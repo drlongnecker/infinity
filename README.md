@@ -23,7 +23,7 @@ Usage:
 ```
 infinity.initialize({
   // where the feed is coming from
-  loadUrl: '/api/articles/as/html?count=3&page=',
+  loadUrl: '/api/articles/as/html?count=3&page={page}',
   // where the rendered HTML goes
   contentContainer: '.content-container',
   // the maximum container size (to figure in total height); defaults to contentContainer
@@ -35,6 +35,12 @@ infinity.initialize({
   // page to start on
   startPage: 1,
   // all the console.log() messages...
-  debug: true
+  debug: true,
+  // function to run before the URL is loaded; happens each iteration.
+  preload: function() { $('.placeholder').show(); },
+  // function to run after the URL is loaded; happens each iteration.
+  iterative: function() { $('.placeholder.hide(); },
+  // function to run after there's nothing more to load.
+  postload: function() { }
 });
 ```
